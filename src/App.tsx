@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
+import {Home} from './pages/Home'
 
 function App() {
   return (
-    <div>
-      <h1>Load Completed with Firebase</h1>
-    </div>
+    <Home></Home>
   );
 }
 
