@@ -1,1 +1,4 @@
-# letmeask - a simple firebase project 🎃
+# letmeask 
+___________________________________________________________________________________________________________________________________________________________________________________
+app for live and streaming where you can create question rooms to answer live.
+
