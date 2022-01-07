@@ -1,10 +1,21 @@
 import { useEffect, useState } from "react";
-// import {Home} from './pages/Home'
-import {NewRoom} from './pages/NewRoom'
+
+// need to install @types/react-router-dom -D cuz works with typescript
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import { Home } from './pages/Home'
+import { NewRoom } from "./pages/NewRoom";
 
 function App() {
   return (
-    <NewRoom></NewRoom>
+    <BrowserRouter>
+    <div>
+      <Routes>
+        <Route path='/' element={<Home/>}></Route>
+        <Route path='/rooms/new' element={<NewRoom/>}></Route>
+      </Routes>
+    </div>
+    </BrowserRouter>
   );
 }
 
