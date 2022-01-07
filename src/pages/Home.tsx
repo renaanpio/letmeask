@@ -1,18 +1,32 @@
 import { useNavigate } from 'react-router-dom'
 
+
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
 import googleIconImg from "../assets/images/google-icon.svg";
 import { Button } from "../components/Button";
 import '../styles/auth.scss'
+import { auth } from '../services/firebase';
+
+
 
 export function Home() {
 
   const navigate = useNavigate()
 
-  function navigateToNewRoom() {
+  function handleCreateRoom() {
+
+//QUERO ABRIR UM POPUP DO GOOGLE, MAS NAO CONSIGO TRAZER PRA CA O FIREBASE
+
+      // const provider = new app.auth.GoogleProvider();
+      // auth.signInWithPopUp(provider).then (result => {
+      //   console.log(result)
+      // })
+
+
     navigate("/rooms/new")
   }
+
 
   return (
     <div id="page-auth">
@@ -24,7 +38,7 @@ export function Home() {
       <main>
         <div className="main-content">
           <img src={logoImg}></img>
-          <button onClick={navigateToNewRoom} className="create-room">
+          <button onClick={handleCreateRoom} className="create-room">
             <img src={googleIconImg}></img>
             Create your room with google
           </button>
