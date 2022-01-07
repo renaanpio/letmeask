@@ -6,7 +6,8 @@ import logoImg from "../assets/images/logo.svg";
 import googleIconImg from "../assets/images/google-icon.svg";
 import { Button } from "../components/Button";
 import '../styles/auth.scss'
-import { auth } from '../services/firebase';
+import {auth, firebase} from "../services/firebase"
+
 
 
 
@@ -18,13 +19,14 @@ export function Home() {
 
 //QUERO ABRIR UM POPUP DO GOOGLE, MAS NAO CONSIGO TRAZER PRA CA O FIREBASE
 
-      // const provider = new app.auth.GoogleProvider();
-      // auth.signInWithPopUp(provider).then (result => {
-      //   console.log(result)
-      // })
+  const provider = new firebase.auth.GoogleAuthProvider()
 
-
+  auth.signInWithPopup(provider).then(result => {
+    console.log(result);
     navigate("/rooms/new")
+    
+  })
+
   }
 
 
