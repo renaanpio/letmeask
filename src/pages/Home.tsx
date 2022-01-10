@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-
+import { useContext } from 'react';
 
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
@@ -7,6 +7,7 @@ import googleIconImg from "../assets/images/google-icon.svg";
 import { Button } from "../components/Button";
 import '../styles/auth.scss'
 import {auth, firebase} from "../services/firebase"
+import { AuthContext } from '../App';
 
 
 
@@ -14,18 +15,16 @@ import {auth, firebase} from "../services/firebase"
 export function Home() {
 
   const navigate = useNavigate()
+  const {user, SignInWithGoogle} = useContext(AuthContext)
 
-  function handleCreateRoom() {
+  async function handleCreateRoom() {
+  if (!user){
+    await SignInWithGoogle()
+  }
 
-//QUERO ABRIR UM POPUP DO GOOGLE, MAS NAO CONSIGO TRAZER PRA CA O FIREBASE
-
-  const provider = new firebase.auth.GoogleAuthProvider()
-
-  auth.signInWithPopup(provider).then(result => {
-    console.log(result);
     navigate("/rooms/new")
     
-  })
+ 
 
   }
 
