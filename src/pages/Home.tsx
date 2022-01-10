@@ -1,33 +1,25 @@
-import { useNavigate } from 'react-router-dom'
-import { useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
 import googleIconImg from "../assets/images/google-icon.svg";
 import { Button } from "../components/Button";
-import '../styles/auth.scss'
-import {auth, firebase} from "../services/firebase"
-import { AuthContext } from '../App';
-
-
-
+import "../styles/auth.scss";
+import { auth, firebase } from "../services/firebase";
+import { AuthContext, AuthContextProvider } from "../context/AuthContext";
 
 export function Home() {
-
-  const navigate = useNavigate()
-  const {user, SignInWithGoogle} = useContext(AuthContext)
+  const navigate = useNavigate();
+  const { user, SignInWithGoogle } = useContext(AuthContext);
 
   async function handleCreateRoom() {
-  if (!user){
-    await SignInWithGoogle()
+    if (!user) {
+      await SignInWithGoogle();
+    }
+
+    navigate("/rooms/new");
   }
-
-    navigate("/rooms/new")
-    
- 
-
-  }
-
 
   return (
     <div id="page-auth">
@@ -45,12 +37,8 @@ export function Home() {
           </button>
           <div className="separator">enter in another room</div>
           <form>
-              <input
-               type='text'
-               placeholder="Room code"
-               >
-               </input>
-               <Button>join room</Button>
+            <input type="text" placeholder="Room code"></input>
+            <Button>join room</Button>
           </form>
         </div>
       </main>
