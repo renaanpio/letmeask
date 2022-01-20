@@ -6,10 +6,10 @@ import logoImg from "../assets/images/logo.svg";
 import googleIconImg from "../assets/images/google-icon.svg";
 import { Button } from "../components/Button";
 import "../styles/auth.scss";
-import { AuthContext, AuthContextProvider } from "../context/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 
 export function NewRoom() {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
 
   return (
     <div id="page-auth">
